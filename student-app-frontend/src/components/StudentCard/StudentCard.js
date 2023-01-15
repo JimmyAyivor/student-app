@@ -1,11 +1,10 @@
 
-
+import "./StudentCard.css"
 const StudentCard = ({ student }) => {
     const { email, company, firstName, lastName, pic, grades, id, skill } =
       student;
-  
     // Converted the grades to numbers
-    const numericGrades = grades.map((grade) => Number(grade));
+    const numericGrades = grades && grades.map((grade) => Number(grade));
   
     // Add up all the grades
     // Init total = 0
@@ -18,10 +17,12 @@ const StudentCard = ({ student }) => {
     // Divide total by number of grades and assign to a var
     const average = total / numericGrades.length;
   
-    console.log(`<StudentCard /> rendered name=${firstName}`);
     return (
-      <div key={id}>
+      <div className="StudentCard" key={id}>
+      <div className="StudentCard__avatar">
         <img src={pic} alt={`${firstName} ${lastName}`} />
+      </div>
+      <div className="StudentCard__info">
         <h1>
           {firstName} {lastName}
         </h1>
@@ -32,6 +33,7 @@ const StudentCard = ({ student }) => {
           <li>Average: {average}%</li>
         </ul>
       </div>
+    </div>
     );
   };
   
