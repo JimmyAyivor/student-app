@@ -23,9 +23,9 @@ const StudentCard = ({ student }) => {
         <img src={pic} alt={`${firstName} ${lastName}`} />
       </div>
       <div className="StudentCard__info">
-        <h1>
+        <h2>
           {firstName} {lastName}
-        </h1>
+        </h2>
         <ul>
           <li>Email: {email}</li>
           <li>Company: {company} </li>
