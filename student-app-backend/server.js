@@ -10,7 +10,9 @@
 
 const app = require('./app.js');
 
-const port = process.env.PORT || 3000;
+require('dotenv').config();
+
+const port = process.env.PORT || 9000;
 
 app.listen(port,"0.0.0.0", () => {
   console.log(`🎧 Listening on port ${port}!`);
