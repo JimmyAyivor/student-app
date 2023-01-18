@@ -9,6 +9,7 @@ const getAllStudents = async () => {
     }
 };
 
+
 const getStudent = async (studentId) => {
     try {
         const student = studentData.students.find(student => {
