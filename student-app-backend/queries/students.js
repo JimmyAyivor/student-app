@@ -2,8 +2,8 @@ const studentData = require('../studentData.json')
 
 const getAllStudents = async () => {
     try {
-        const allTickets = studentData.students;
-        return allTickets;
+        const allStudents = studentData.students;
+        return allStudents;
     } catch (err) {
         return err;
     }
