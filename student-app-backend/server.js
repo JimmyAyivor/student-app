@@ -1,19 +1,13 @@
-/**
- * This file represents our API server. It does the following:
- * - import an Express application
- * - start the server by listening on a particular port
- * 
- * TODOS:
- * - [] Port should be configurable by an environment variable
- *      (This is required by most deploy services.)
- */
+// Start the server and listen for incoming requests to our API
 
-const app = require('./app.js');
-
+// Get environment variables
 require('dotenv').config();
 
-const port = process.env.PORT || 9000;
+// Import the application
+const app = require('./app');
 
-app.listen(port,"0.0.0.0", () => {
-  console.log(`🎧 Listening on port ${port}!`);
+// Have the app listen
+const PORT = process.env.PORT || 9000;
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}...`);
 });

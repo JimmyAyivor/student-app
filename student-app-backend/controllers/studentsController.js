@@ -1,31 +1,36 @@
 const express = require('express');
-const students = express.Router();
-
 const {
-    getAllStudents,
-    getStudent
-} = require("../queries/students");
+  getAllStudents,
+  getStudentById,
+} = require('../queries/studentsQueries');
 
-students.get('/', async (request, response) => {
-    const allStudents = await getAllStudents();
-    if (allStudents[0]) {
-        response.status(200).json({data: allStudents});
-    } else {
-        res.status(500).json({ error: "server error!" });
-    }
+const studentsController = express.Router();
 
-})
-
-
-students.get("/:id", async (request, response) => {
-    const { id } = request.params;
-    const student = await getStudent(id);
-    if (student.id) {
-        response.status(200).json({data :student});
-    } else {
-        res.status(404).json({ error: "student not found" });
-    }
+studentsController.get('/', (request, response) => {
+  try {
+    const students = getAllStudents();
+    response.status(200).json({ data: students });
+  } catch (err) {
+    response.status(500).json({ error: err.message });
+  }
 });
 
+studentsController.get('/:id', (request, response) => {
+  try {
+    const { id } = request.params;
+    const student = getStudentById(id);
 
-module.exports = students
+    if (student) {
+      // return 200
+      return response.status(200).json({ data: student });
+    }
+    // return 404
+    response
+      .status(404)
+      .json({ error: `Could not find student with id ${id}` });
+  } catch (err) {
+    response.status(500).json({ error: err.message });
+  }
+});
+
+module.exports = studentsController;
