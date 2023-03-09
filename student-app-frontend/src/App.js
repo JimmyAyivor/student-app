@@ -5,7 +5,6 @@ import Container  from './components/Layout/Container';
 import Loading from './components/Loading/Loading';
 import StudentList from './components/StudentList/StudentList';
 
-// TODO: Get this value from .env
 const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
