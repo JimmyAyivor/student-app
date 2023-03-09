@@ -57,12 +57,10 @@ function App() {
       return <StudentList studentData={studentData} />;
     }
   };
-  console.log(
-    `<App /> rendered! error= ${error} loading = ${loading} num students = ${studentData.length}`
-  );
+ 
   return (
     <div className="App">
-      <Container center={Boolean(error || loading)}>
+      <Container center={Boolean(error || loading)}  scroll={false}>
         {renderContent()}
       </Container>
     </div>
