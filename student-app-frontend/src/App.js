@@ -13,16 +13,14 @@ function App() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    console.log('<App /> useEffect() fired');
     async function fetchData() {
       try {
         // Remove any errors from previous attempts
         setError('');
         // Show the user that we're loading...
         setLoading(true);
-        const response = await fetch(`${API_URL}/students`);
+        const response = await fetch(`${API_URL}/students?include=grades`);
         const json = await response.json();
-        console.log('<App /> useEffect() fetched data', json);
         const { data, error } = json;
         if (response.ok) {
           // handle success
@@ -35,7 +33,6 @@ function App() {
           setLoading(false);
         }
       } catch (err) {
-        console.log(`<App /> useEffect error: ${err.message}`);
         setError(err.message);
         setLoading(false);
       }

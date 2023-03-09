@@ -73,7 +73,6 @@ const StudentList = ({ studentData }) => {
     }
   };
 
-  console.log(`<StudentList /> rendered! searchInput = ${searchInput}`);
   return (
     <div className="StudentList">
       <div className="StudentList__controls">

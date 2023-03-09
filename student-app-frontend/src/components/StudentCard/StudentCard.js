@@ -8,7 +8,7 @@ const StudentCard = ({ expanded, onClick, student }) => {
     student;
 
   // Converted the grades to numbers
-  const numericGrades = grades.map((grade) => Number(grade));
+  const numericGrades = grades.map(({score}) => Number(score));
 
   // Add up all the grades
   // Init total = 0
@@ -21,9 +21,7 @@ const StudentCard = ({ expanded, onClick, student }) => {
   // Divide total by number of grades and assign to a var
   const average = total / numericGrades.length;
 
-  console.log(
-    `<StudentCard /> rendered name=${firstName} expanded=${expanded}`
-  );
+ 
   return (
     <div className="StudentCard" key={id}>
       <div className="StudentCard__avatar">
@@ -42,9 +40,9 @@ const StudentCard = ({ expanded, onClick, student }) => {
         {expanded && (
           <div className="StudentCard__grades">
             <ul>
-              {grades.map((grade, index) => (
-                <li key={`${grade}-${index}`}>
-                  <span>Test {index + 1}</span> <span>{grade}%</span>
+              {grades.map(({id,score},index) => (
+                <li key={id}>
+                  <span>Test {index + 1}</span> <span>{score}%</span>
                 </li>
               ))}
             </ul>

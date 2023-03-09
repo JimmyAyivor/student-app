@@ -10,7 +10,6 @@ const Container = ({ center, children, scroll = true }) => {
     classNames.push('Container--scroll');
   }
 
-  console.log(`<Container /> rendered!`);
   return <div className={classNames.join(' ')}>{children}</div>;
 };
 
