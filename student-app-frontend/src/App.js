@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Error from './components/Error/Error';
-import { Container } from './components/Layout/Container';
+import Container  from './components/Layout/Container';
 import Loading from './components/Loading/Loading';
 import StudentList from './components/StudentList/StudentList';
 
