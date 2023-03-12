@@ -34,11 +34,11 @@ const getStudentByIdV2 = async (id) => {
 const addStudentV2 = async (studentData) => {
 
   const { first_name, last_name, city, company, email, pic, skill } = studentData;
-    const createdStudent = await db.one(
-      "INSERT INTO students ( first_name, last_name, city, company, email, pic, skill) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-      [first_name, last_name, city, company, email, pic, skill]
-    );
-    return createdStudent;
+  const createdStudent = await db.one(
+    "INSERT INTO students ( first_name, last_name, city, company, email, pic, skill) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+    [first_name, last_name, city, company, email, pic, skill]
+  );
+  return createdStudent;
 };
 
 

@@ -69,7 +69,7 @@ studentsControllerV2.get('/:id/grades', async (request, response) => {
 //Add new student
 
 studentsControllerV2.post('/', async (request, response) => {
-  const studentData  = request.body;
+  const studentData = request.body;
 
   if (!studentData || Object.keys(studentData).length === 0) {
     return response.status(422).json({ error: "Unprocessable Entity" });
