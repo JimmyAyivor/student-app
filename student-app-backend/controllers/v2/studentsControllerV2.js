@@ -3,6 +3,7 @@ const {
   getAllStudentsV2,
   getStudentByIdV2,
   getAllStudentsWithGradesV2,
+  addStudentV2,
 } = require('../../queries/v2/studentsQueriesV2');
 
 const { getGradesByStudentIdV2 } = require('../../queries/v2/gradesQueriesV2');
@@ -61,6 +62,23 @@ studentsControllerV2.get('/:id/grades', async (request, response) => {
       .json({ error: `Could not find student with id ${id}` });
   } catch (err) {
     response.status(500).json({ error: err.message });
+  }
+});
+
+
+//Add new student
+
+studentsControllerV2.post('/', async (request, response) => {
+  const studentData  = request.body;
+
+  if (!studentData || Object.keys(studentData).length === 0) {
+    return response.status(422).json({ error: "Unprocessable Entity" });
+  }
+  try {
+    const newStudent = await addStudentV2(studentData);
+    response.status(201).json(newStudent);
+  } catch (err) {
+    response.status(422).json({ error: err });
   }
 });
 

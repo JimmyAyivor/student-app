@@ -18,10 +18,10 @@ const app = express();
 // Functions that will work with req, res before
 // the final route handler function
 app.use(cors());
-
+app.use(express.json());
 // Controllers
-app.use('/students', studentsController);
 app.use('/v2/students', studentsControllerV2);
+app.use('/students', studentsController);
 
 // Define our routes
 
